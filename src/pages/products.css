@@ -1,0 +1,32 @@
+.products-content{
+    padding: 2%;
+}
+
+.buy-block{
+    border-radius: 5px;
+    padding: 3%;
+    border: 1px solid rgb(201, 195, 195);
+}
+
+.productsWrapper{
+ display: flex;
+ align-items: center;
+}
+
+.products-button{
+    width: 100%;
+    padding: 5px;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: rgb(211, 189, 94);
+    border: none;
+}
+
+.buy-now{
+    background-color: rgb(235, 166, 64);
+}
+
+.assurance{
+    display: flex;
+}

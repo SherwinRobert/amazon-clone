@@ -1,0 +1,49 @@
+.gridWrapper{
+    padding: 10px;
+    position: relative;
+    width: 23%;
+    background-color: whitesmoke;
+    border-radius: 5px;
+}
+
+.fourGird{
+    display: grid;
+    align-items: center;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+
+}
+
+.grid-img{
+    position: relative;
+    width: 100% ;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+}
+
+@media (max-width:1240px) {
+    .gridWrapper{
+        width: 30%;
+    }
+
+    .gridWrapper:last-child{
+        display: none;
+    }
+}
+
+@media (max-width:940px) {
+    .gridWrapper{
+        width: 40%;
+    }
+
+     .gridWrapper:last-child{
+        display: block;
+    }
+}
+
+@media (max-width:700px) {
+    .gridWrapper{
+        width: 90%;
+    }
+}

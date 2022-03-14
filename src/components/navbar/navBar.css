@@ -1,0 +1,108 @@
+*{
+    box-sizing: border-box;
+}
+
+.navBar{
+    display:flex;
+    background-color: rgb(4, 4, 37);
+    justify-content: space-between;
+    align-items: center;
+    padding:5px 2%;
+
+}
+
+.logo{
+    padding: 5px;
+    height: 40px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.input{
+    display: flex;
+    align-items: center;
+}
+
+.searchButton{
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: rgb(211, 189, 94);
+    height:38px;
+    width: 40px;
+    border-bottom-right-radius: 5px ;
+    border-top-right-radius: 5px ;
+}
+
+.searchIcon{
+    height: 20px;
+}
+
+.input{
+    /* flex: 1 1 0%; */
+    flex-basis: 60%;
+}
+
+.searchBar{
+    width: 100%;
+    height: 40px;
+    border-bottom-left-radius: 5px ;
+    border-top-left-radius: 5px ;
+}
+
+.name{
+    text-align: center;
+    color: white;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.cart{
+    display: flex;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+.linker{
+    text-decoration: none;
+    color: white;
+}
+
+.user-display{
+    position: relative;
+    cursor: pointer;
+}
+
+.sign-in-div{
+    display: none;
+    position: absolute;
+    top:30px;
+    z-index: 1;
+    padding: 10px 20px;
+    background-color: white;
+    border-radius:5px;
+}
+
+.sign-in-but{
+    border: none;
+    background-color: rgb(211, 189, 94);
+    padding: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.name:hover .sign-in-div{
+    display: block;
+}
+
+.footer{
+    color: white;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    background-color: rgb(4, 4, 37);
+}

@@ -1,0 +1,65 @@
+
+.amazonLogo{
+    height:50px;
+}
+
+.loginContainer{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.loginMain{
+    position: absolute;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginForm{
+    border: 1px solid rgb(219, 219, 219);
+    width: 350px;
+    padding: 20px;
+}
+
+.loginCreateNew{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.login-button{
+    border-radius: 5px;
+    background-color: rgb(211, 189, 94);
+    border:none;
+    cursor:pointer;
+    width: 100%;
+    padding: 7px;
+    margin-bottom: 20px;
+}
+
+.input-label{
+    font-size: 12px;
+    font-weight:bold;
+}
+.login-input{
+    padding: 5px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.small-tag{
+    font-size: 12px;
+    line-height: 0.5rem;
+}
+
+.createButton{
+    background-color: rgb(214, 208, 208);
+    font-size: 14px;
+    padding: 10px;
+}

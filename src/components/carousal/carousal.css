@@ -1,0 +1,78 @@
+.carousal-main{
+    /* position: relative; */
+}
+
+.carousalImage{
+    position: absolute;
+    width: 100%;
+    object-fit: cover;
+    /* background: linear-gradient(red, yellow); */
+}
+
+.carousalButton{
+    z-index: 1;
+    position:absolute;
+    top: 20%;
+    border: none;
+    border-radius: 3px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.carousal-container{
+    display: flex;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.left-position{
+    left: 10px;
+}
+
+.right-position{
+    right:10px;
+}
+
+.translator{
+    transform: translateX(-100%);
+}
+
+.icon{
+    height: 20px;
+}
+
+.flexer{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    top:300px;
+}
+
+@media (max-width:800px) {
+      .flexer{
+        top:275px;
+    }
+}
+
+@media (max-width:500px) {
+    .carousalImage{
+        height:30%;
+    }
+
+    .flexer{
+        top:250px;
+    }
+}
+
+@media (max-width:300px) {
+    .carousalImage{
+        height:30%;
+    }
+
+    .flexer{
+        top:200px;
+    }
+}

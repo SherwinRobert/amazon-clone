@@ -1,0 +1,30 @@
+
+
+.login-button1{
+    border-radius: 5px;
+    background-color: rgb(211, 189, 94);
+    border:none;
+    cursor:pointer;
+    width: 100%;
+    padding: 7px;
+    margin-bottom: 20px;
+    margin-top:10px;
+}
+
+.login-input1{
+    padding: 5px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.small-tag{
+    font-size: 12px;
+    line-height: 0.5rem;
+}
+
+.signup{
+    text-decoration: none;
+    color: gray;
+    font-size: 14px;
+    padding-left: 2px;
+}
