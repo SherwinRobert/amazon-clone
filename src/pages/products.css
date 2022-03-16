@@ -4,24 +4,91 @@
 
 .buy-block{
     border-radius: 5px;
-    padding: 3%;
+    padding: 10px;
     border: 1px solid rgb(201, 195, 195);
 }
 
 .productsWrapper{
  display: flex;
- align-items: center;
+ /* align-items: center; */
+}
+
+.amazon-perks{
+    display: block;
+}
+
+.price{
+    font-size: 2rem;
+}
+
+.stock{
+    color: rgb(142, 206, 142);
+}
+
+.button-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .products-button{
     width: 100%;
-    padding: 5px;
+    padding: 10px;
     cursor: pointer;
     margin: 5px;
     border-radius: 5px;
     background-color: rgb(211, 189, 94);
     border: none;
 }
+
+.quant-but{
+    margin: 5px;
+    border:none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-sizing: border-box;
+}
+
+.product-title{
+    font-size: 1.75rem;
+
+}
+.feature-list{
+    padding-left: 15px;
+}
+
+.product-desc{
+    flex-grow: 1;
+}
+
+.feat-img-wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+}
+.perk-img{
+    width: 50px;
+}
+
+.quantity{
+    display: flex;
+    align-items: center;
+}
+
+.product-img{
+    aspect-ratio: 1/1;
+    width: 25%;
+    margin-right: 50px;
+    margin-bottom: 50px;
+}
+
+.buy-block{
+    width: 100%;
+    flex-basis: 30%;
+}
+
 
 .buy-now{
     background-color: rgb(235, 166, 64);

@@ -7,34 +7,30 @@ import { FeatureSlider } from './components/FeatureSilder/FeatureSlider';
 import "./App.css";
 import { getDatabase, ref , get,child } from "firebase/database";
 
-export const HomePage = (props) => {
-
-  const [product, productSetter] = useState([])
-
-  const readProducts = async(id) => {
+export const readProducts = async (id) => {
     const dbRef = ref(getDatabase());
     let prod;
     try {
-      prod = await get(child(dbRef, `products/${id}`))
-    } catch(error) {
-      console.log(error)
+      prod = await get(child(dbRef, `products/${id}`));
+    } catch (error) {
+      console.log(error);
     }
 
     return prod.val();
-  }
+};
+  
+export const HomePage = (props) => {
 
-
+  const [product, productSetter] = useState([])
   useEffect(() => {
-
-    Promise.all([...Array(30)].map(() => {
-      let random = Math.floor(Math.random() * 1000)
-      return readProducts(random)
+    let randomProducts = [...Array(30)].map(() => Math.floor(Math.random() * 1000))
+    Promise.all(randomProducts.map(e => {
+      return readProducts(e)
     })).then(data => {
-
       let temp = [];
       let filteredArray = [];
       for (let i = 0; i < data.length; i++) {
-        temp.push(data[i]);
+        temp.push({productId:randomProducts[i],...data[i]});
         switch (i) {
           case 15:
             filteredArray.push(temp);
@@ -52,7 +48,6 @@ export const HomePage = (props) => {
         }
       }
       productSetter(filteredArray);
-      console.log("filtered data is",filteredArray);
     }).catch(error => console.log(error))
 
     },[])

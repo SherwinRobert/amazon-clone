@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import amazonLogo from '../../images/amazon_logo.png'
 import './loginScreen.css'
-import { app } from "../../firebase-config.js";
+import { Link } from 'react-router-dom';
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -18,14 +18,15 @@ export const LoginScreen = (props) => {
   })
   
   console.log(state)
-  function verifier(email, password) {
+  function verifier(name,email, password) {
     const authentication = getAuth();
     signInWithEmailAndPassword(authentication, email, password)
       .then((response) => {
-        console.log(response)
+        console.log(response.user.uid)
+        sessionStorage.setItem("userId",response.user.uid)
         history('/')
         props.setSession({
-          name: email,
+          name: name,
           isLoggedIn:true
         })
       })
@@ -35,7 +36,7 @@ export const LoginScreen = (props) => {
     console.log("clicked")
     e.preventDefault()
     if (input.current.value !== "") {
-      verifier(state.email,state.password)
+      verifier(state.name,state.email,state.password)
     }
   }
 
@@ -57,7 +58,9 @@ export const LoginScreen = (props) => {
     return (
       <div className="loginContainer">
         <main className="loginMain">
-          <img className="amazonLogo" src={amazonLogo} alt="" />
+          <Link to="/">
+            <img className="amazonLogo" src={amazonLogo} alt="" />
+          </Link>
           <section className="loginForm">
             <div>Sign-In</div>
             <form action="">

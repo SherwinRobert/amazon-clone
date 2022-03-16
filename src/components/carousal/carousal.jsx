@@ -11,8 +11,6 @@ export function Carousal(props) {
   const [count, setCount] = React.useState(0);
   const [carousel] = React.useState([carousel1, carousel2, carousel3]);
 
-  console.log("tell me",props)
-
   function shiftLeft() {
     console.log('shift left');
     console.log(count);
@@ -45,8 +43,6 @@ export function Carousal(props) {
         temp = []
       }
     }
-
-    console.log(updatedArray)
     return updatedArray
   }
 

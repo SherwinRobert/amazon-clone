@@ -1,10 +1,9 @@
 import React, { useContext, useReducer } from 'react';
-import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import amazonLogo from '../../images/amazon_logo.png';
 import '../loginScreen/loginScreen.css';
 import './accountCreater.css';
-
+import { getDatabase, ref, set} from "firebase/database";
 import { app } from '../../firebase-config.js';
 
 import {
@@ -12,6 +11,15 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
+
+function writeUserData(name, email, id) {
+  const db = getDatabase();
+  set(ref(db, "users/" + id), {
+    username: name,
+    email: email,
+    cart: []
+  }).then((response) => console.log(response));
+}
 
 export function AccountCreater(props) {
   const navigator = useNavigate();
@@ -30,14 +38,16 @@ export function AccountCreater(props) {
 
   console.log(state);
 
-  function handleAction(email, password) {
+  function handleAction(name,email, password) {
     const authentication = getAuth();
 
-    createUserWithEmailAndPassword(authentication, email, password).then(
+    createUserWithEmailAndPassword(authentication, email, password)
+      .then(
       (response) => {
-        console.log(response);
-      },
-    ).then(() => navigator('/'));
+          console.log(response?.user?.uid);
+          writeUserData(name, email, response?.user?.uid);
+          navigator('/')
+      })
   }
 
   function reducerFun(data, action) {
@@ -49,7 +59,7 @@ export function AccountCreater(props) {
       };
       console.log(updatedObject);
       // dataFetcher(updatedObject)
-      handleAction(updatedObject.email, updatedObject.password);
+      handleAction(updatedObject.name,updatedObject.email, updatedObject.password);
       return updatedObject;
     } if (action.type === 'error') {
       // throw new Error("Passwords Not Matching")
@@ -78,7 +88,9 @@ export function AccountCreater(props) {
   return (
     <div className="loginContainer">
       <main className="loginMain">
-        <img className="amazonLogo" src={amazonLogo} alt="" />
+        <Link to="/">
+          <img className="amazonLogo" src={amazonLogo} alt="" />
+        </Link>
         <section className="loginForm">
           <div>Create your account</div>
           <form action="">
@@ -86,13 +98,27 @@ export function AccountCreater(props) {
               Your Name
             </label>
             <br />
-            <input onChange={formUpdater} className="login-input1" id="username" type="text" value={state.name} name="name" />
+            <input
+              onChange={formUpdater}
+              className="login-input1"
+              id="username"
+              type="text"
+              value={state.name}
+              name="name"
+            />
             <br />
             <label className="input-label" htmlFor="emailInput">
               Email
             </label>
             <br />
-            <input onChange={formUpdater} className="login-input1" id="emailInput" type="email" value={state.email} name="email" />
+            <input
+              onChange={formUpdater}
+              className="login-input1"
+              id="emailInput"
+              type="email"
+              value={state.email}
+              name="email"
+            />
             <br />
             <label className="input-label" htmlFor="passwordInput">
               Password

@@ -3,28 +3,30 @@ import "./FeatureSilder.css"
 import productImg from '../../images/product_placeholder.png'
 import { ChevL } from '../../icons/chevL'
 import { ChevR } from '../../icons/chevR'
+import { Link } from 'react-router-dom'
 
 export const FeatureSlider = (props) => {
   const scrollDiv = useRef()
-  
+  console.log("feature-slider",props.data)
   function leftScroll() {
     console.log(scrollDiv.current)
   }
 
-  let elements = props.data?.map(e=>{
+  let elements = props?.data?.map(e=>{
     return (
       <div>
-        <img
-          className="feature-silder-img"
-          src={e?.images?.large?.url}
-          alt=""
-        />
+        <Link to={`/products/${e.productId}`}>
+          <img
+            className="feature-silder-img"
+            src={e?.images?.large?.url}
+            alt=""
+          />
+        </Link>
       </div>
     );
   })
   
   function rightScroll() {
-    // console.log()
     scrollDiv.current.scroll({ left: 100 });
   }
     return (
