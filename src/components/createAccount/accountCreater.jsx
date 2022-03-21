@@ -1,16 +1,10 @@
-import React, { useContext, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import amazonLogo from '../../images/amazon_logo.png';
 import '../loginScreen/loginScreen.css';
 import './accountCreater.css';
-import { getDatabase, ref, set} from "firebase/database";
-import { app } from '../../firebase-config.js';
-
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-} from 'firebase/auth';
+import { getDatabase, ref, set } from "firebase/database";
+import { useAuth } from '../../hooks/useAuth';
 
 function writeUserData(name, email, id) {
   const db = getDatabase();
@@ -23,6 +17,8 @@ function writeUserData(name, email, id) {
 
 export function AccountCreater(props) {
   const navigator = useNavigate();
+  const { createAccount } = useAuth()
+  
   const [state, setState] = React.useState({
     name: '',
     email: '',
@@ -39,9 +35,8 @@ export function AccountCreater(props) {
   console.log(state);
 
   function handleAction(name,email, password) {
-    const authentication = getAuth();
 
-    createUserWithEmailAndPassword(authentication, email, password)
+    createAccount(email, password)
       .then(
       (response) => {
           console.log(response?.user?.uid);
@@ -58,11 +53,9 @@ export function AccountCreater(props) {
         ...action.payload,
       };
       console.log(updatedObject);
-      // dataFetcher(updatedObject)
       handleAction(updatedObject.name,updatedObject.email, updatedObject.password);
       return updatedObject;
     } if (action.type === 'error') {
-      // throw new Error("Passwords Not Matching")
       console.log('passwords not matching');
     }
   }
@@ -74,6 +67,7 @@ export function AccountCreater(props) {
       [name]: value,
     }));
   }
+  
   function fetcher(e) {
     e.preventDefault();
     if (state.password === state.confirmPassword) {

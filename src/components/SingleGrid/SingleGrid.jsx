@@ -6,8 +6,7 @@ import { Link } from 'react-router-dom'
 export const SingleGrid = (props) => {
 
   console.log(props.data)
-  let elements = props.data?.map(e=>{
-    // console.log(e.url)
+  let elements = props?.data?.map(e=>{
     return (
       <section key={e.id}>
         <Link to={`/products/${e.productId}`}>

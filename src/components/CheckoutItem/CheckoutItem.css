@@ -1,0 +1,18 @@
+.checkout-item-wrapper{
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    /* border: 1px solid grey; */
+    margin: 10px 0;
+    box-shadow: 2px 2px 5px rgb(211, 206, 206);
+}
+
+.checkout-item-content{
+    display: flex;
+    flex-direction: column;
+}
+.checkout-item-img{
+    aspect-ratio: 1/1;
+    max-width: 200px;
+    margin: 10px;
+}

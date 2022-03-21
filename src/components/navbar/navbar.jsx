@@ -2,9 +2,19 @@ import React from 'react'
 import amazonLogo from '../../images/amazon_logo3.png';
 import SearchIcon from "../../icons/Search";
 import {ReactComponent as Cart} from "../../icons/cart.svg";
-import {Link} from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useAuth } from '../../hooks/useAuth';
 
 function NavBar(props) {
+
+  const { logOut } = useAuth()
+  const history = useNavigate()
+
+  const handleLogOut = async () => {
+    await logOut()
+    history("/")
+  }
+
   return (
     <nav className="navBar">
       <div>
@@ -27,8 +37,8 @@ function NavBar(props) {
           <div className="user-display">
             <div>Hi Sherwin</div>
             <div className="sign-in-div">
-              <button className="sign-in-but">
-                <small>LogOut</small>
+              <button onClick={handleLogOut} className="sign-in-but">
+                <div>LogOut</div>
               </button>
             </div>
           </div>

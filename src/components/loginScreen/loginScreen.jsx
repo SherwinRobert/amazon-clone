@@ -3,10 +3,8 @@ import { useNavigate } from "react-router-dom";
 import amazonLogo from '../../images/amazon_logo.png'
 import './loginScreen.css'
 import { Link } from 'react-router-dom';
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+
+import { useAuth } from '../../hooks/useAuth';
 
 export const LoginScreen = (props) => {
 
@@ -16,20 +14,15 @@ export const LoginScreen = (props) => {
     email: "",
     password:""
   })
+  const { signIn ,persister } = useAuth()
   
   console.log(state)
   function verifier(name,email, password) {
-    const authentication = getAuth();
-    signInWithEmailAndPassword(authentication, email, password)
+    signIn(email, password)
       .then((response) => {
-        console.log(response.user.uid)
         sessionStorage.setItem("userId",response.user.uid)
         history('/')
-        props.setSession({
-          name: name,
-          isLoggedIn:true
-        })
-      })
+      }).catch(() => {})
   }
 
   function submitter(e) {

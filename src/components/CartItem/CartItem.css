@@ -1,3 +1,48 @@
+.cart-item-wrapper{
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 2px 2px 5px rgb(207, 205, 205);
+    margin:2% 0;
+    border-radius: 5px;
+    padding: 1%;
+}
+
 .cart-item{
     display: flex;
+   
+}
+
+.cart-fun-wrapper{
+    display: flex;
+    align-items: center;
+}
+.cart-img{
+    max-width:200px;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+
+.cart-button{
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 10px;
+
+}
+
+.quant-disp{
+     margin-top: 10px;
+    margin-right: 10px;
+}
+
+.cart-price{
+    
+}
+.cart-changer{
+    display: flex;
+}
+
+.delete-icon{
+    height: 20px;
+    cursor: pointer;
 }
